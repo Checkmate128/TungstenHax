@@ -1,9 +1,9 @@
-# Fabric Example Mod
+# Tungsten Hax
 
 ## Setup
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+Download the fabric mod and place it in your mods folder. This mod requires version 1.18.x and fabric loader 0.12.12 or higher.
 
 ## License
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+This mod is available under the CC0 license. Feel free to download it and learn from it.
