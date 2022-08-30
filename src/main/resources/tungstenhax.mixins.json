@@ -1,0 +1,24 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.Checkmate128.tungstenhax.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+  ],
+  "client": [
+    "AutoFishMixin",
+    "AutoFishHelperMixin",
+    "EntityFlyMixin",
+    "GameMenuScreenMixin",
+    "PlayerFlyMixin",
+    "InfiniteJumpMixin",
+    "NoFallDamageMixin",
+    "XRAYMixin",
+    "XRAYHelperMixin",
+    "GhostBlockMixin",
+    "AdBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

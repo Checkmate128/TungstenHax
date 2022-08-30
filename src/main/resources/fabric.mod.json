@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
-  "version": "${version}",
+  "id": "tungstenhax",
+  "version": "0.0.1",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Tungsten Hax",
+  "description": "Hacked client for Minecraft 1.18.",
   "authors": [
-    "Me!"
+    "Checkmate128"
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
@@ -19,20 +19,19 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "com.Checkmate128.tungstenhax.TungstenHaxMod"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "tungstenhax.mixins.json"
   ],
 
   "depends": {
-    "fabricloader": ">=0.13.3",
-    "fabric": "*",
-    "minecraft": "~1.18.2",
+    "fabricloader": ">=0.12.12",
+    "minecraft": "1.18.x",
     "java": ">=17"
   },
   "suggests": {
-    "another-mod": "*"
+
   }
 }
