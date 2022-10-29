@@ -34,10 +34,14 @@ public class PlayerFlyMixin {
             }
 
             if(!client.player.isOnGround()) {
-                if (!(client.options.forwardKey.isPressed() || client.options.rightKey.isPressed() || client.options.leftKey.isPressed() || client.options.backKey.isPressed())) {
-                    client.player.setVelocity(0, yVelocity, 0);
-                } else {
+                if (client.options.forwardKey.isPressed() && !client.options.backKey.isPressed()) {
                     client.player.setVelocity(client.player.getRotationVector().multiply(2));
+                    client.player.setVelocity(client.player.getVelocity().x, yVelocity, client.player.getVelocity().z);
+                } else if(client.options.backKey.isPressed()) {
+                    client.player.setVelocity(client.player.getRotationVector().multiply(-2));
+                    client.player.setVelocity(client.player.getVelocity().x, yVelocity, client.player.getVelocity().z);
+                } else {
+                    client.player.setVelocity(0, yVelocity, 0);
                 }
             } else {
                 if(client.options.jumpKey.isPressed()) {

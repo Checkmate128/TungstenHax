@@ -21,6 +21,7 @@ public class TungstenHaxMod implements ModInitializer {
 	public static boolean fullBrightEnabled = false;
 	public static boolean ghostBlocksEnabled = false;
 	public static boolean adBlockEnabled = true;
+	public static boolean robotModeEnabled = false;
 
 	@Override
 	public void onInitialize() {

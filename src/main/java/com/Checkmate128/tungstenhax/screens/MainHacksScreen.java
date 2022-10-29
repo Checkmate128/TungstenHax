@@ -84,6 +84,14 @@ public class MainHacksScreen extends Screen {
         }
     }
 
+    private Text getRobotModeText() {
+        if(TungstenHaxMod.robotModeEnabled) {
+            return Text.of("Robot Mode: On");
+        } else {
+            return Text.of("Robot Mode: Off");
+        }
+    }
+
     @Override
     public void init() {
         this.addDrawableChild(new ButtonWidget(50, 10, 100, 20, getAutoFishText(), (button) -> {
@@ -128,6 +136,10 @@ public class MainHacksScreen extends Screen {
         this.addDrawableChild(new ButtonWidget(50, 250, 100, 20, getAdBlockText(), (button) -> {
             TungstenHaxMod.adBlockEnabled = !TungstenHaxMod.adBlockEnabled;
             button.setMessage(getAdBlockText());
+        }));
+        this.addDrawableChild(new ButtonWidget(50, 280, 100, 20, getRobotModeText(), (button) -> {
+            TungstenHaxMod.robotModeEnabled = !TungstenHaxMod.robotModeEnabled;
+            button.setMessage(getRobotModeText());
         }));
     }
 }

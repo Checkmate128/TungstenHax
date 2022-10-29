@@ -16,7 +16,8 @@
     "XRAYMixin",
     "XRAYHelperMixin",
     "GhostBlockMixin",
-    "AdBlockMixin"
+    "AdBlockMixin",
+    "RobotModeMixin"
   ],
   "injectors": {
     "defaultRequire": 1
