@@ -76,6 +76,14 @@ public class MainHacksScreen extends Screen {
         }
     }
 
+    private Text getGhostBreakText() {
+        if(TungstenHaxMod.ghostBreakEnabled) {
+            return Text.of("Ghost Break: On");
+        } else {
+            return Text.of("Ghost Break: Off");
+        }
+    }
+
     private Text getAdBlockText() {
         if(TungstenHaxMod.adBlockEnabled) {
             return Text.of("AdBlock: On");
@@ -94,33 +102,33 @@ public class MainHacksScreen extends Screen {
 
     @Override
     public void init() {
-        this.addDrawableChild(new ButtonWidget(50, 10, 100, 20, getAutoFishText(), (button) -> {
+        this.addDrawableChild(new ButtonWidget(0, 0, 100, 20, getAutoFishText(), (button) -> {
             TungstenHaxMod.autoFishingEnabled = !TungstenHaxMod.autoFishingEnabled;
             button.setMessage(getAutoFishText());
         }));
-        this.addDrawableChild(new ButtonWidget(50, 40, 100, 20, getEntityFlyText(), (button) -> {
+        this.addDrawableChild(new ButtonWidget(0, 20, 100, 20, getEntityFlyText(), (button) -> {
             TungstenHaxMod.entityFlyEnabled = !TungstenHaxMod.entityFlyEnabled;
             button.setMessage(getEntityFlyText());
         }));
-        this.addDrawableChild(new ButtonWidget(50, 70, 100, 20, getPlayerFlyText(), (button) -> {
+        this.addDrawableChild(new ButtonWidget(0, 40, 100, 20, getPlayerFlyText(), (button) -> {
             TungstenHaxMod.playerFlyEnabled = !TungstenHaxMod.playerFlyEnabled;
             button.setMessage(getPlayerFlyText());
         }));
-        this.addDrawableChild(new ButtonWidget(50, 100, 100, 20, getInfiniteJumpText(), (button) -> {
+        this.addDrawableChild(new ButtonWidget(0, 60, 100, 20, getInfiniteJumpText(), (button) -> {
             TungstenHaxMod.infiniteJumpEnabled = !TungstenHaxMod.infiniteJumpEnabled;
             button.setMessage(getInfiniteJumpText());
         }));
-        this.addDrawableChild(new ButtonWidget(50, 130, 100, 20, getNoFallDamageText(), (button) -> {
+        this.addDrawableChild(new ButtonWidget(0, 80, 100, 20, getNoFallDamageText(), (button) -> {
             TungstenHaxMod.noFallDamageEnabled = !TungstenHaxMod.noFallDamageEnabled;
             button.setMessage(getNoFallDamageText());
         }));
-        this.addDrawableChild(new ButtonWidget(50, 160, 100, 20, getXRAYText(), (button) -> {
+        this.addDrawableChild(new ButtonWidget(0, 100, 100, 20, getXRAYText(), (button) -> {
             TungstenHaxMod.xrayEnabled = !TungstenHaxMod.xrayEnabled;
             button.setMessage(getXRAYText());
             MinecraftClient.getInstance().worldRenderer.reload();
             MinecraftClient.getInstance().chunkCullingEnabled = !TungstenHaxMod.xrayEnabled;
         }));
-        this.addDrawableChild(new ButtonWidget(50, 190, 100, 20, getFullBrightText(), (button) -> {
+        this.addDrawableChild(new ButtonWidget(0, 120, 100, 20, getFullBrightText(), (button) -> {
             TungstenHaxMod.fullBrightEnabled = !TungstenHaxMod.fullBrightEnabled;
             button.setMessage(getFullBrightText());
             if(TungstenHaxMod.fullBrightEnabled) {
@@ -129,15 +137,19 @@ public class MainHacksScreen extends Screen {
                 MinecraftClient.getInstance().options.gamma = 1.0;
             }
         }));
-        this.addDrawableChild(new ButtonWidget(50, 220, 100, 20, getGhostBlockText(), (button) -> {
+        this.addDrawableChild(new ButtonWidget(0, 140, 100, 20, getGhostBlockText(), (button) -> {
             TungstenHaxMod.ghostBlocksEnabled = !TungstenHaxMod.ghostBlocksEnabled;
             button.setMessage(getGhostBlockText());
         }));
-        this.addDrawableChild(new ButtonWidget(50, 250, 100, 20, getAdBlockText(), (button) -> {
+        this.addDrawableChild(new ButtonWidget(0, 160, 100, 20, getGhostBreakText(), (button) -> {
+            TungstenHaxMod.ghostBreakEnabled = !TungstenHaxMod.ghostBreakEnabled;
+            button.setMessage(getGhostBreakText());
+        }));
+        this.addDrawableChild(new ButtonWidget(0, 180, 100, 20, getAdBlockText(), (button) -> {
             TungstenHaxMod.adBlockEnabled = !TungstenHaxMod.adBlockEnabled;
             button.setMessage(getAdBlockText());
         }));
-        this.addDrawableChild(new ButtonWidget(50, 280, 100, 20, getRobotModeText(), (button) -> {
+        this.addDrawableChild(new ButtonWidget(0, 200, 100, 20, getRobotModeText(), (button) -> {
             TungstenHaxMod.robotModeEnabled = !TungstenHaxMod.robotModeEnabled;
             button.setMessage(getRobotModeText());
         }));
