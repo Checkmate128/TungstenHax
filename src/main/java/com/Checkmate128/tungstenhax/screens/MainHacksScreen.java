@@ -10,6 +10,8 @@ import net.minecraft.text.Text;
 public class MainHacksScreen extends Screen {
     public MainHacksScreen(Text title) {
         super(title);
+        MinecraftClient client = MinecraftClient.getInstance();
+        super.init();
     }
 
     private Text getAutoFishText() {

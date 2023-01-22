@@ -1,8 +1,15 @@
 package com.Checkmate128.tungstenhax;
 
+import com.Checkmate128.tungstenhax.screens.MainHacksScreen;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.util.InputUtil;
+import net.minecraft.text.Text;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.lwjgl.glfw.GLFW;
 
 public class TungstenHaxMod implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
@@ -25,12 +32,22 @@ public class TungstenHaxMod implements ModInitializer {
 	public static boolean adBlockEnabled = true;
 	public static boolean robotModeEnabled = false;
 
+	public static KeyBinding openCheatMenu;
+
 	@Override
 	public void onInitialize() {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 
-		LOGGER.info("Tungsten Hax On!");
+		openCheatMenu = new KeyBinding("Open Cheat Menu", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_LEFT_BRACKET, "TungstenHax");
+
+		KeyBindingHelper.registerKeyBinding(openCheatMenu);
+
+		ClientTickEvents.END_CLIENT_TICK.register(client -> {
+			while (openCheatMenu.wasPressed()) {
+				client.setScreen(new MainHacksScreen(Text.of("Tungsten Hax")));
+			}
+		});
 	}
 }

@@ -9,7 +9,6 @@
     "AutoFishMixin",
     "AutoFishHelperMixin",
     "EntityFlyMixin",
-    "GameMenuScreenMixin",
     "PlayerFlyMixin",
     "InfiniteJumpMixin",
     "NoFallDamageMixin",

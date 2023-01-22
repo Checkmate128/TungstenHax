@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "id": "tungstenhax",
-  "version": "0.0.1",
+  "id": "tungsten",
+  "version": "0.2.0",
 
   "name": "Tungsten Hax",
   "description": "Hacked client for Minecraft 1.18.",
