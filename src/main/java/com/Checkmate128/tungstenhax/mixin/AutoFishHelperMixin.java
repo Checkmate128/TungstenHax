@@ -21,7 +21,7 @@ public abstract class AutoFishHelperMixin {
     private void tick(CallbackInfo ci) {
         if (client.player != null && ((PlayerEntity)(Object)this).getUuid().equals(client.player.getUuid())) {
             if (AutoFishHelper.shouldRecast() && client.player != null && client.player.isHolding(Items.FISHING_ROD)) {
-                client.interactionManager.interactItem(client.player, client.world, Hand.MAIN_HAND);
+                client.interactionManager.interactItem(client.player, Hand.MAIN_HAND);
             }
 
             AutoFishHelper.tick();

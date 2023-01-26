@@ -32,7 +32,7 @@ public abstract class AutoFishMixin {
 	@Inject(at = @At("TAIL"), method = "tick")
 	private void tick(CallbackInfo info) {
 		if(catchDelay <= 0 && caughtFish && TungstenHaxMod.autoFishingEnabled && client.player != null && client.player.isHolding(Items.FISHING_ROD) && getPlayerOwner().getUuid().equals(client.player.getUuid())) {
-			client.interactionManager.interactItem(client.player, client.world, Hand.MAIN_HAND);
+			client.interactionManager.interactItem(client.player, Hand.MAIN_HAND);
 			catchDelay = rand.nextInt(5, 15);
 			AutoFishHelper.resetRecastTimer();
 		}

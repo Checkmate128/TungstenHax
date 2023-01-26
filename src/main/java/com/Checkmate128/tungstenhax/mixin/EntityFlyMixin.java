@@ -23,7 +23,7 @@ public class EntityFlyMixin {
             velocity = velocity.normalize();
             double yVelocity = 0.0;
             if (client.options.jumpKey.isPressed()) {
-                yVelocity += 1.0;
+                yVelocity += TungstenHaxMod.entityFlySpeed;
             }
 
             if(flyCheckBypassCounter == 0) {
@@ -33,7 +33,10 @@ public class EntityFlyMixin {
 
             if(!vehicle.isOnGround()) {
                 if (client.options.forwardKey.isPressed()) {
-                    vehicle.setVelocity(velocity.x, yVelocity, velocity.z);
+                    Vec3d newVelocity = vehicle.getVelocity();
+                    newVelocity = new Vec3d(velocity.x, 0, velocity.z);
+                    newVelocity = newVelocity.normalize().multiply(TungstenHaxMod.entityFlySpeed);
+                    vehicle.setVelocity(newVelocity.x, yVelocity, newVelocity.z);
                 } else {
                     vehicle.setVelocity(0, yVelocity, 0);
                 }

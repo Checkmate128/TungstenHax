@@ -1,10 +1,9 @@
-package com.Checkmate128.tungstenhax.screens;
+package com.Checkmate128.tungstenhax.ui;
 
 import com.Checkmate128.tungstenhax.TungstenHaxMod;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.client.gui.widget.SliderWidget;
 import net.minecraft.text.Text;
 
 public class MainHacksScreen extends Screen {
@@ -51,6 +50,14 @@ public class MainHacksScreen extends Screen {
             return Text.of("No Fall Damage: On");
         } else {
             return Text.of("No Fall Damage: Off");
+        }
+    }
+
+    private Text getPlayerSpeedText() {
+        if(TungstenHaxMod.playerSpeedEnabled) {
+            return Text.of("Player Speed: On");
+        } else {
+            return Text.of("Player Speed: Off");
         }
     }
 
@@ -104,56 +111,63 @@ public class MainHacksScreen extends Screen {
 
     @Override
     public void init() {
-        this.addDrawableChild(new ButtonWidget(0, 0, 100, 20, getAutoFishText(), (button) -> {
+        this.addDrawableChild(ButtonWidget.builder(getAutoFishText(), (button) -> {
             TungstenHaxMod.autoFishingEnabled = !TungstenHaxMod.autoFishingEnabled;
             button.setMessage(getAutoFishText());
-        }));
-        this.addDrawableChild(new ButtonWidget(0, 20, 100, 20, getEntityFlyText(), (button) -> {
+        }).dimensions(0, 0, 100, 20).build());
+        this.addDrawableChild(ButtonWidget.builder(getEntityFlyText(), (button) -> {
             TungstenHaxMod.entityFlyEnabled = !TungstenHaxMod.entityFlyEnabled;
             button.setMessage(getEntityFlyText());
-        }));
-        this.addDrawableChild(new ButtonWidget(0, 40, 100, 20, getPlayerFlyText(), (button) -> {
+        }).dimensions(0, 20, 100, 20).build());
+        this.addDrawableChild(new EntityFlySpeedSlider(100, 20, 100, 20, Text.of(""), TungstenHaxMod.entityFlySpeed));
+        this.addDrawableChild(ButtonWidget.builder(getPlayerFlyText(), (button) -> {
             TungstenHaxMod.playerFlyEnabled = !TungstenHaxMod.playerFlyEnabled;
             button.setMessage(getPlayerFlyText());
-        }));
-        this.addDrawableChild(new ButtonWidget(0, 60, 100, 20, getInfiniteJumpText(), (button) -> {
+        }).dimensions(0, 40, 100, 20).build());
+        this.addDrawableChild(new PlayerFlySpeedSlider(100, 40, 100, 20, Text.of(""), TungstenHaxMod.playerFlySpeed));
+        this.addDrawableChild(ButtonWidget.builder(getInfiniteJumpText(), (button) -> {
             TungstenHaxMod.infiniteJumpEnabled = !TungstenHaxMod.infiniteJumpEnabled;
             button.setMessage(getInfiniteJumpText());
-        }));
-        this.addDrawableChild(new ButtonWidget(0, 80, 100, 20, getNoFallDamageText(), (button) -> {
+        }).dimensions(0, 60, 100, 20).build());
+        this.addDrawableChild(ButtonWidget.builder(getNoFallDamageText(), (button) -> {
             TungstenHaxMod.noFallDamageEnabled = !TungstenHaxMod.noFallDamageEnabled;
             button.setMessage(getNoFallDamageText());
-        }));
-        this.addDrawableChild(new ButtonWidget(0, 100, 100, 20, getXRAYText(), (button) -> {
+        }).dimensions(0, 80, 100, 20).build());
+        this.addDrawableChild(ButtonWidget.builder(getPlayerSpeedText(), (button) -> {
+            TungstenHaxMod.playerSpeedEnabled = !TungstenHaxMod.playerSpeedEnabled;
+            button.setMessage(getPlayerSpeedText());
+        }).dimensions(0, 100, 100, 20).build());
+        this.addDrawableChild(new SpeedHackSlider(100, 100, 100, 20, Text.of(""), TungstenHaxMod.playerSpeed / 3));
+        this.addDrawableChild(ButtonWidget.builder(getXRAYText(), (button) -> {
             TungstenHaxMod.xrayEnabled = !TungstenHaxMod.xrayEnabled;
             button.setMessage(getXRAYText());
-            MinecraftClient.getInstance().worldRenderer.reload();
             MinecraftClient.getInstance().chunkCullingEnabled = !TungstenHaxMod.xrayEnabled;
-        }));
-        this.addDrawableChild(new ButtonWidget(0, 120, 100, 20, getFullBrightText(), (button) -> {
+            MinecraftClient.getInstance().worldRenderer.reload();
+        }).dimensions(0, 120, 100, 20).build());
+        this.addDrawableChild(ButtonWidget.builder(getFullBrightText(), (button) -> {
             TungstenHaxMod.fullBrightEnabled = !TungstenHaxMod.fullBrightEnabled;
             button.setMessage(getFullBrightText());
             if(TungstenHaxMod.fullBrightEnabled) {
-                MinecraftClient.getInstance().options.gamma = 16.0;
+                client.options.getGamma().setValue(16.0);
             } else {
-                MinecraftClient.getInstance().options.gamma = 1.0;
+                client.options.getGamma().setValue(1.0);
             }
-        }));
-        this.addDrawableChild(new ButtonWidget(0, 140, 100, 20, getGhostBlockText(), (button) -> {
+        }).dimensions(0, 140, 100, 20).build());
+        this.addDrawableChild(ButtonWidget.builder(getGhostBlockText(), (button) -> {
             TungstenHaxMod.ghostBlocksEnabled = !TungstenHaxMod.ghostBlocksEnabled;
             button.setMessage(getGhostBlockText());
-        }));
-        this.addDrawableChild(new ButtonWidget(0, 160, 100, 20, getGhostBreakText(), (button) -> {
+        }).dimensions(0, 160, 100, 20).build());
+        this.addDrawableChild(ButtonWidget.builder(getGhostBreakText(), (button) -> {
             TungstenHaxMod.ghostBreakEnabled = !TungstenHaxMod.ghostBreakEnabled;
             button.setMessage(getGhostBreakText());
-        }));
-        this.addDrawableChild(new ButtonWidget(0, 180, 100, 20, getAdBlockText(), (button) -> {
+        }).dimensions(0, 180, 100, 20).build());
+        this.addDrawableChild(ButtonWidget.builder(getAdBlockText(), (button) -> {
             TungstenHaxMod.adBlockEnabled = !TungstenHaxMod.adBlockEnabled;
             button.setMessage(getAdBlockText());
-        }));
-        this.addDrawableChild(new ButtonWidget(0, 200, 100, 20, getRobotModeText(), (button) -> {
+        }).dimensions(0, 200, 100, 20).build());
+        this.addDrawableChild(ButtonWidget.builder(getRobotModeText(), (button) -> {
             TungstenHaxMod.robotModeEnabled = !TungstenHaxMod.robotModeEnabled;
             button.setMessage(getRobotModeText());
-        }));
+        }).dimensions(0, 220, 100, 20).build());
     }
 }

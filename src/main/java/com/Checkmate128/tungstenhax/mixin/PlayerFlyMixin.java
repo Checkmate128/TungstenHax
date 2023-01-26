@@ -22,10 +22,10 @@ public class PlayerFlyMixin {
             double yVelocity = 0;
             Vec3d velocity = oldVelocity.normalize();
             if(client.options.jumpKey.isPressed()) {
-                yVelocity += 0.5;
+                yVelocity += TungstenHaxMod.playerFlySpeed;
             }
             if(client.options.sneakKey.isPressed()) {
-                yVelocity -= 0.5;
+                yVelocity -= TungstenHaxMod.playerFlySpeed;
             }
 
             if(flyCheckBypassCounter == 0) {
@@ -35,10 +35,10 @@ public class PlayerFlyMixin {
 
             if(!client.player.isOnGround()) {
                 if (client.options.forwardKey.isPressed() && !client.options.backKey.isPressed()) {
-                    client.player.setVelocity(client.player.getRotationVector().multiply(2));
+                    client.player.setVelocity(client.player.getRotationVector().multiply(TungstenHaxMod.playerFlySpeed));
                     client.player.setVelocity(client.player.getVelocity().x, yVelocity, client.player.getVelocity().z);
                 } else if(client.options.backKey.isPressed()) {
-                    client.player.setVelocity(client.player.getRotationVector().multiply(-2));
+                    client.player.setVelocity(client.player.getRotationVector().multiply(-TungstenHaxMod.playerFlySpeed));
                     client.player.setVelocity(client.player.getVelocity().x, yVelocity, client.player.getVelocity().z);
                 } else {
                     client.player.setVelocity(0, yVelocity, 0);

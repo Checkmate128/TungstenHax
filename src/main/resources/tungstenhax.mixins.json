@@ -12,12 +12,14 @@
     "PlayerFlyMixin",
     "InfiniteJumpMixin",
     "NoFallDamageMixin",
+    "PlayerSpeedMixin",
     "XRAYMixin",
     "XRAYHelperMixin",
     "GhostBlockMixin",
     "GhostBreakMixin",
     "AdBlockMixin",
-    "RobotModeMixin"
+    "RobotModeMixin",
+    "FullBrightMixin"
   ],
   "injectors": {
     "defaultRequire": 1

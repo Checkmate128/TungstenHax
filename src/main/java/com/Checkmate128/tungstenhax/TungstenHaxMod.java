@@ -1,6 +1,6 @@
 package com.Checkmate128.tungstenhax;
 
-import com.Checkmate128.tungstenhax.screens.MainHacksScreen;
+import com.Checkmate128.tungstenhax.ui.MainHacksScreen;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -21,9 +21,13 @@ public class TungstenHaxMod implements ModInitializer {
 	public static int autoFishingRecastDelay = 80;
 	public static int autoFishingDelayRandomization = 20;
 	public static boolean entityFlyEnabled = false;
+	public static double entityFlySpeed = 1.0;
 	public static boolean playerFlyEnabled = false;
+	public static double playerFlySpeed = 1.0;
 	public static boolean infiniteJumpEnabled = false;
 	public static boolean noFallDamageEnabled = false;
+	public static boolean playerSpeedEnabled = false;
+	public static double playerSpeed = 1.0;
 	public static boolean xrayEnabled = false;
 	public static boolean fullBrightEnabled = false;
 	public static boolean ghostBlocksEnabled = false;
